@@ -1,22 +1,31 @@
-import { Component } from 'react';
-import './style.css';
-import {postitsImg} from '../../services/imgService';
+import { Component } from "react";
+import "./style.css";
+import { postitsImg } from "../../services/imgService";
 
-class Content extends Component{ 
+class Content extends Component {
 
-    render(){
-        return(
-            <main className="content">
-                <nav className="content__nav">
-                    <ul className="postIts">
-                        {postitsImg.map(v => 
-                            <li className="postIt"><h2 className="postIt__title">{v.title}</h2><img className="postIt__img" src={v.img} alt="" /><button className="content__button">Buy</button></li>
-                        )}
-                    </ul>
-                </nav>
-            </main>          
-        )
+    selectPostit(postit) {
+        this.props.showForm(postit);
     }
+  render() {
+    return (
+      <main className="content">
+        <nav className="content__nav">
+          <ul className="postIts">
+            {postitsImg.map((postit, index) => (
+              <li key={index} className="postIt">
+                <h2 className="postIt__title">{postit.title}</h2>
+                <span className="postIt__price">{postit.price}</span>
+                <span className="postIt__price">{postit.description}</span>
+                <img className="postIt__img" src={postit.img} alt="" />
+                <button onClick={() => this.selectPostit(postit)} className="postIt__button">Buy</button>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </main>
+    );
+  }
 }
 
 export default Content;

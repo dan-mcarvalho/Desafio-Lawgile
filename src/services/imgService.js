@@ -6,10 +6,10 @@ import pink2 from '../assets/img/pink2.png';
 import purple from '../assets/img/purple.png'; 
 
 export const postitsImg = [
-    {title: "Post-it blue", img: blue},
-    {title: "Post-it pack", img: pack},
-    {title: "Post-it pink", img: pink},
-    {title: "Post-it red", img: red},
-    {title: "Post-it pink2", img: pink2},
-    {title: "Post-it purple", img: purple}
+    {title: "Ocean blue", img: blue, price: "R$5,99", description: "It's a postit which looks like the ocean"},
+    {title: "Pack", img: pack, price: "R$5,99", description: "It's a useful pack of postits"},
+    {title: "Pinky", img: pink, price: "R$1,99", description: "It's pinky"},
+    {title: "Redex", img: red, price: "R$1,99", description: "It's the red one"},
+    {title: "Super pink", img: pink2, price: "R$5,99", description: "It's a pink pack of postits"},
+    {title: "Purplezoid", img: purple, price: "R$1,99", description: "It's the purple one"}
 ]

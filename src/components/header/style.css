@@ -1,0 +1,12 @@
+.header {
+    background: #5983B3;
+    text-align: center;
+}
+
+.header__title {
+    padding: 1rem 0;
+    color: white;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}  

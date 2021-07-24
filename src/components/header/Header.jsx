@@ -6,8 +6,8 @@ class Header extends Component{
     render(){
         return(
         
-          <header>
-            <h1>Post-it Shop</h1>
+          <header className="header">
+            <h1 className="header__title">Post-it Shop</h1>
           </header>
         )
     }

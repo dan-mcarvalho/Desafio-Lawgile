@@ -1,6 +1,43 @@
 .postIt__img{
-    
     width:15rem;
     height:15rem;
+}
 
+.postIt {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 30%;
+    margin: 2.5rem 1rem;
+    height: 65vh;
+}
+
+.postIts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.postIt__title {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.postIt__button {
+    padding: 1rem 2rem;
+    background: #334B66;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+    color: white;
+    transition: background 1s;
+}
+
+.postIt__button:hover {
+    background: #0a0f14;
+ 
+    cursor: pointer;
 }
