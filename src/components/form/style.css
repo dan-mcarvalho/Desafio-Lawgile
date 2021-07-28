@@ -4,10 +4,10 @@
     top: 50%;
     transform: translate(-50%, -50%);
     background: #5983B3;
-    border: 2px solid black;
+    border: 2px solid gray;
     width: 35rem;
     height: 30rem;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     color: white;
@@ -16,6 +16,7 @@
 .form__title {
     font-size: 2.25rem;
     margin: 1rem 0;
+    text-transform: uppercase;
 }
 
 .form__column {
@@ -52,6 +53,31 @@
 }
 
 .form__button {
-    padding: .5rem;
+    padding: .75rem;
+    background: #334B66;
+    border: none;
+    color: white;
+    border-radius: .5rem;
+    transition: background 1s;
 }
 
+.form__button:hover {
+    background: #0a0f14;
+    cursor: pointer;
+}
+
+
+.form__close{
+    position: absolute;
+    top: 0;
+    right: 0; 
+    padding: .25rem 1rem;
+    border: none;
+    background: tomato;
+    color: white;
+}
+
+.form__close:hover {
+    cursor: pointer;
+    background: rgb(110, 35, 21);
+}
