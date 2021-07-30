@@ -7,6 +7,7 @@ class Content extends Component {
   constructor() {
     super();
 
+    this.postit = {};
     this.state = {
       show: false,
       products: [],
@@ -29,26 +30,35 @@ class Content extends Component {
     this.setState({ show: false });
   }
 
+  takePostit(postit) {
+    this.postit = postit;
+  } 
+
   render() {
     return (
       <main className="content">
-        <Form show={this.state.show} close={this.close}></Form>
+        <Form postit={this.postit} show={this.state.show} close={this.close}></Form>
         <nav className="content__nav">
           <ul className="postIts">
             {this.state.products.map((postit, index) => {
               return (
-                <li key={index} className="postIt">
-                  <h2 className="postIt__title">{postit.title}</h2>
-                  <span className="postIt__price">{postit.price}</span>
-                  <span className="postIt__price">{postit.description}</span>
-                  <img className="postIt__img" src={postit.img} alt="" />
-                  <button
-                    onClick={() => this.showForm()}
-                    className="postIt__button"
-                  >
-                    Buy
-                  </button>
-                </li>
+                <>
+                  <li key={index} className="postIt">
+                    <h2 className="postIt__title">{postit.title}</h2>
+                    <span className="postIt__price">{postit.price}</span>
+                    <span className="postIt__price">{postit.description}</span>
+                    <img className="postIt__img" src={postit.img} alt="" />
+                    <button
+                      onClick={() => {
+                        this.showForm();
+                        this.takePostit(postit);
+                      }}
+                      className="postIt__button"
+                    >
+                      Buy
+                    </button>
+                  </li>
+                </>
               );
             })}
           </ul>

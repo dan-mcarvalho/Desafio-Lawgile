@@ -8,6 +8,44 @@ import purple from '../assets/img/purple.png';
 
 export default class PostitService{
 
+
+    static submitForm(postit, userData){
+        console.log(postit);
+        console.log(userData);
+        fetch('http://127.0.0.1:3100/graphql', {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+              //'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*'
+            },
+            body: JSON.stringify({
+              query: `
+              mutation {
+                createTbReserve(
+                    input: { tbReserve: { productName:${postit.name} , productPrice:${postit.price} , productDescription: ${postit.description} , userEmail:${userData} } }
+                ) {
+                    tbReserve {
+                        productName
+                        productPrice
+                        productDescription
+                        userEmail
+                        
+                    }
+                }
+            }
+                `,
+              variables: {
+                now: new Date().toISOString(),
+              },
+            }),
+          })
+            .then((res) => res.json())
+            .then((result) => console.log(result));
+        
+
+    }
+
     static getPostits(){
         return new Promise(resolve => {
             resolve({
