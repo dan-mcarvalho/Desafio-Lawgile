@@ -4,6 +4,7 @@ import pink from '../assets/img/pink.jpg';
 import red from '../assets/img/red.png'; 
 import pink2 from '../assets/img/pink2.png'; 
 import purple from '../assets/img/purple.png'; 
+import axios from 'axios';
 
 
 export default class PostitService{
@@ -12,36 +13,59 @@ export default class PostitService{
     static submitForm(postit, userData){
         console.log(postit);
         console.log(userData);
-        fetch('https://9mcvpqo8wh.execute-api.us-east-2.amazonaws.com/dev/', {
-            method: 'POST',
-            mode: 'cors',
+        const res = axios.post('https://9mcvpqo8wh.execute-api.us-east-2.amazonaws.com/dev/', 
+        { 
+            query: `
+            mutation {
+              createTbReserve(
+                  input: { tbReserve: { productName:${postit.name} , productPrice:${postit.price} , productDescription: ${postit.description} , userEmail:${userData} } }
+              ) {
+                  tbReserve {
+                      productName
+                      productPrice
+                      productDescription
+                      userEmail
+                      
+                  }
+              }
+          }`
+        }, 
+        {
             headers: {
-              //'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*'
+              'Content-Type': 'text/plain',
+              'Access-Control-Allow-Origin':'*'
             },
-            body: JSON.stringify({
-              query: `
-              mutation {
-                createTbReserve(
-                    input: { tbReserve: { productName:${postit.name} , productPrice:${postit.price} , productDescription: ${postit.description} , userEmail:${userData} } }
-                ) {
-                    tbReserve {
-                        productName
-                        productPrice
-                        productDescription
-                        userEmail
+        })
+
+        console.log(res.data)
+
+        // fetch('https://9mcvpqo8wh.execute-api.us-east-2.amazonaws.com/dev/', 
+        // {
+        //     method: 'POST',
+        //     mode: 'cors',
+        //     headers: {
+        //       'Content-Type': 'text/plain',
+        //       'Access-Control-Allow-Origin':'*'
+        //     },
+        //     body: JSON.stringify({
+        //       query: `
+        //       mutation {
+        //         createTbReserve(
+        //             input: { tbReserve: { productName:${postit.name} , productPrice:${postit.price} , productDescription: ${postit.description} , userEmail:${userData} } }
+        //         ) {
+        //             tbReserve {
+        //                 productName
+        //                 productPrice
+        //                 productDescription
+        //                 userEmail
                         
-                    }
-                }
-            }
-                `,
-              variables: {
-                now: new Date().toISOString(),
-              },
-            }),
-          })
-            .then((res) => res.json())
-            .then((result) => console.log(result));
+        //             }
+        //         }
+        //     }
+        //         `,
+        //     }),
+        //   }).then((res) => res.json())
+        //     .then((result) => console.log(result));
         
 
     }
