@@ -12,7 +12,7 @@ export default class PostitService{
     static submitForm(postit, userData){
         console.log(postit);
         console.log(userData);
-        fetch('http://127.0.0.1:3100/graphql', {
+        fetch('https://9mcvpqo8wh.execute-api.us-east-2.amazonaws.com/dev/', {
             method: 'POST',
             mode: 'cors',
             headers: {
